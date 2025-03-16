@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .detail {
+            margin-bottom: 10px;
+        }
+        .detail label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Emergency Details</h1>
+    <div class="detail">
+        <label>Name:</label> {{ detail.name }}
+    </div>
+    <div class="detail">
+        <label>Emergency Contact:</label> {{ detail.emergency_contact }}
+    </div>
+    <div class="detail">
+        <label>Vehicle Number:</label> {{ detail.vehicle_number }}
+    </div>
+    <div class="detail">
+        <label>Blood Group:</label> {{ detail.blood_group }}
+    </div>
+    <div class="detail">
+        <label>Allergies:</label> {{ detail.allergies }}
+    </div>
+    <div class="detail">
+        <label>Differently-Abled:</label> {{ detail.differently_abled }}
+    </div>
+    <div class="detail">
+        <label>Alternate Contact:</label> {{ detail.alternate_contact }}
+    </div>
+</body>
+</html>

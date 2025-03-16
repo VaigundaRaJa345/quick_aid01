@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | QUICK AID</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff758c, #ff7eb3, #ff6f61);
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Login Container */
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Gradient Header */
+        .login-header {
+            background: linear-gradient(135deg, #ff758c, #ff6f61);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .login-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        /* Form Styling */
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .login-form label {
+            text-align: left;
+            font-weight: bold;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .login-form input:focus {
+            border-color: #ff5c5c;
+            outline: none;
+        }
+
+        /* Button Styling */
+        .login-form button {
+            background: linear-gradient(135deg, #ff5c5c, #ff7eb3);
+            color: white;
+            font-size: 1.1rem;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .login-form button:hover {
+            background: linear-gradient(135deg, #d32f2f, #ff5c5c);
+        }
+
+        /* Register Link */
+        .login-form p {
+            margin-top: 15px;
+            font-size: 1rem;
+        }
+
+        .login-form a {
+            color: #ff5c5c;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .login-form a:hover {
+            color: #d32f2f;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            .login-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .login-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .login-form input {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+
+            .login-form button {
+                font-size: 1rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Login to QUICK AID</h2>
+        </div>
+        <form action="/login" method="POST" class="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+
+            <p>Don't have an account? <a href="/register">Register</a></p>
+        </form>
+    </div>
+
+</body>
+</html>

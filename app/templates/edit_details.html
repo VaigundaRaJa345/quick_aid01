@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        /* Gradient Background */
+        body {
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Form Container */
+        .form-container {
+            max-width: 500px;
+            width: 90%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Labels */
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+
+        /* Inputs */
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            width: 48%;
+            padding: 12px;
+            margin: 10px 1%;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        /* Cancel Button */
+        .cancel-btn {
+            background-color: #dc3545;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Hover Effects */
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+
+        .cancel-btn:hover {
+            background-color: #c82333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .form-container {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+
+    <div class="form-container">
+        <h2>Edit Emergency Details</h2>
+        <form action="{{ url_for('edit_details', uid=detail.uid) }}" method="POST">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" value="{{ detail.name }}" required>
+
+            <label for="emergency_contact">Emergency Contact Number:</label>
+            <input type="text" id="emergency_contact" name="emergency_contact" value="{{ detail.emergency_contact }}" required>
+
+            <label for="vehicle_number">Vehicle Number:</label>
+            <input type="text" id="vehicle_number" name="vehicle_number" value="{{ detail.vehicle_number }}" required>
+
+            <label for="blood_group">Blood Group (Optional):</label>
+            <input type="text" id="blood_group" name="blood_group" value="{{ detail.blood_group }}">
+
+            <label for="allergies_select">Do you have allergies?</label>
+            <select id="allergies_select" name="allergies">
+                <option value="No" {% if detail.allergies == "No" %}selected{% endif %}>No</option>
+                <option value="Yes" {% if detail.allergies != "No" %}selected{% endif %}>Yes</option>
+            </select>
+            <input type="text" id="allergies_input" name="allergy_type" placeholder="Specify allergies" value="{{ detail.allergies if detail.allergies != 'No' else '' }}">
+
+            <label for="disabled_select">Are you differently-abled?</label>
+            <select id="disabled_select" name="differently_abled">
+                <option value="No" {% if detail.differently_abled == "No" %}selected{% endif %}>No</option>
+                <option value="Yes" {% if detail.differently_abled != "No" %}selected{% endif %}>Yes</option>
+            </select>
+            <input type="text" id="disabled_input" name="disability_type" placeholder="Specify condition" value="{{ detail.differently_abled if detail.differently_abled != 'No' else '' }}">
+
+            <label for="alternate_contact">Alternate Emergency Contact (Optional):</label>
+            <input type="text" id="alternate_contact" name="alternate_contact" value="{{ detail.alternate_contact }}">
+
+            <button type="submit" class="btn submit-btn">Update Details</button>
+            <a href="{{ url_for('dashboard') }}" class="btn cancel-btn">Cancel</a>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const allergiesSelect = document.getElementById('allergies_select');
+            const allergiesInput = document.getElementById('allergies_input');
+            allergiesInput.style.display = allergiesSelect.value === 'Yes' ? 'block' : 'none';
+
+            allergiesSelect.addEventListener('change', function() {
+                allergiesInput.style.display = this.value === 'Yes' ? 'block' : 'none';
+            });
+
+            const disabledSelect = document.getElementById('disabled_select');
+            const disabledInput = document.getElementById('disabled_input');
+            disabledInput.style.display = disabledSelect.value === 'Yes' ? 'block' : 'none';
+
+            disabledSelect.addEventListener('change', function() {
+                disabledInput.style.display = this.value === 'Yes' ? 'block' : 'none';
+            });
+        });
+    </script>
+{% endblock %}

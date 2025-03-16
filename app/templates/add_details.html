@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="form-container">
+        <h1>Add Emergency Details</h1>
+        <form action="{{ url_for('add_details') }}" method="POST">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="emergency_contact">Emergency Contact Number:</label>
+            <input type="text" id="emergency_contact" name="emergency_contact" required>
+
+            <label for="vehicle_number">Vehicle Number:</label>
+            <input type="text" id="vehicle_number" name="vehicle_number" required>
+
+            <label for="blood_group">Blood Group (Optional):</label>
+            <input type="text" id="blood_group" name="blood_group">
+
+            <label for="allergies_select">Do you have allergies?</label>
+            <select id="allergies_select" name="allergies">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+            <input type="text" id="allergies_input" name="allergy_type" placeholder="Specify allergies" style="display: none;">
+
+            <label for="disabled_select">Are you differently-abled?</label>
+            <select id="disabled_select" name="differently_abled">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+            <input type="text" id="disabled_input" name="disability_type" placeholder="Specify condition" style="display: none;">
+
+            <label for="alternate_contact">Alternate Emergency Contact (Optional):</label>
+            <input type="text" id="alternate_contact" name="alternate_contact">
+
+            <button type="submit">Save Details</button>
+        </form>
+
+        {% if qr_code %}
+            <div class="qr-section">
+                <h2>Your QR Code</h2>
+                <img src="{{ url_for('static', filename='qrcodes/' + qr_code) }}" alt="Generated QR Code">
+                <br>
+                <a href="{{ url_for('download_qr', filename=qr_code) }}" class="download-btn">Download QR Code</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        document.getElementById('allergies_select').addEventListener('change', function() {
+            document.getElementById('allergies_input').style.display = this.value === 'Yes' ? 'block' : 'none';
+        });
+
+        document.getElementById('disabled_select').addEventListener('change', function() {
+            document.getElementById('disabled_input').style.display = this.value === 'Yes' ? 'block' : 'none';
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #16345d, #214b87);
+        }
+
+        .qr-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .qr-section img {
+            width: 200px;
+            height: 200px;
+            margin-top: 10px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #28a745;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #218838;
+        }
+    </style>
+{% endblock %}
