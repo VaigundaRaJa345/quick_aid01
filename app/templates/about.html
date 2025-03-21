@@ -1,143 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About QUICK AID</title>
-    <style>
-        /* General Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #ff7eb3, #ff758c, #ff6f61);
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
+{% extends "base.html" %}
+{% block content %}
+<style>
+    body {
+        background-color: #1e3c72;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    .about-container {
+        max-width: 800px;
+        margin: auto;
+        padding: 50px 20px;
+    }
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+    .highlight {
+        color: #4a69bd; /* Slightly lighter blue to match #1e3c72 */
+        font-weight: bold;
+    }
+    .cta-button {
+        display: inline-block;
+        padding: 12px 25px;
+        font-size: 1rem;
+        background-color: #ffcc00;
+        color: black;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .cta-button:hover {
+        background-color: #ffdb4d;
+    }
+    .contact-section {
+        margin-top: 30px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        text-align: center;
+    }
+    .contact-table {
+        width: 100%;
+        max-width: 600px;
+        margin: auto;
+        border-collapse: collapse;
+    }
+    .contact-table th, .contact-table td {
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        text-align: center;
+    }
+    .contact-table th {
+        background-color: rgba(255, 255, 255, 0.2);
+        font-size: 1.2rem;
+    }
+    .contact-table td {
+        font-size: 1rem;
+    }
+    .contact-table a {
+        color: #ffcc00;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    .contact-table a:hover {
+        text-decoration: underline;
+    }
+</style>
 
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
+<div class="about-container">
+    <h1>About QUICK AID</h1>
+    <p>QUICK AID is designed to provide <span class="highlight">quick access</span> to emergency details when needed the most.</p>
+    <p>Our system securely stores and retrieves emergency contacts, medical details, and vehicle information, ensuring safety and ease of access.</p>
+    <p>With <span class="highlight">scannable Aztec codes</span>, first responders and bystanders can instantly access vital information.</p>
+    <a href="{{ url_for('register') }}" class="cta-button">Get Started</a>
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #ff758c, #ff6f61);
-            color: #fff;
-            padding: 25px;
-            border-radius: 12px 12px 0 0;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.8rem;
-            margin: 0;
-            letter-spacing: 1px;
-        }
-
-        /* Section Styling */
-        .section {
-            padding: 20px;
-            text-align: left;
-        }
-
-        .section:nth-child(even) {
-            background: #ffebef;
-            border-radius: 10px;
-            padding: 25px;
-        }
-
-        .section h2 {
-            font-size: 2rem;
-            color: #ff5c5c;
-            border-left: 6px solid #ff5c5c;
-            padding-left: 12px;
-        }
-
-        .section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #444;
-        }
-
-        /* Links */
-        .contact a {
-            color: #ff5c5c;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .contact a:hover {
-            color: #d32f2f;
-            text-decoration: underline;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                width: 90%;
-                padding: 15px;
-            }
-
-            .header h1 {
-                font-size: 2.2rem;
-            }
-
-            .section h2 {
-                font-size: 1.6rem;
-            }
-
-            .section p {
-                font-size: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <div class="header">
-            <h1>About QUICK AID</h1>
-        </div>
-
-        <div class="section">
-            <p>
-                QUICK AID is a web-based emergency information system designed to provide quick access to essential details in critical situations. 
-                Users can store emergency contacts, medical details, and vehicle information, accessible via a secure **Aztec Code system**.
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>How It Works</h2>
-            <p>
-                🚀 <strong>Register and Log In:</strong> Create an account to access the QUICK AID platform.<br>
-                🏥 <strong>Add Emergency Details:</strong> Store contact info, medical details, and vehicle numbers.<br>
-                🔗 <strong>Generate QR Code:</strong> Get a unique Aztec code linked to your information.<br>
-                📲 <strong>Scan & Access:</strong> Bystanders can scan the code to retrieve emergency details instantly.<br>
-                ✏️ <strong>Edit Anytime:</strong> Update your details as needed via the dashboard.
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>Our Mission</h2>
-            <p>
-                Our goal is to improve emergency response times with a **fast, secure, and accessible system** for sharing critical information. 
-                QUICK AID helps save lives by ensuring that essential details are readily available in **medical emergencies or road accidents**.
-            </p>
-        </div>
-
-        <div class="section contact">
-            <h2>Contact Us</h2>
-            <p>
-                Have questions or feedback? Reach out to us at <a href="mailto:support@quickaid.com">support@quickaid.com</a>.
-            </p>
-        </div>
+    <div class="contact-section">
+        <h2>Contact Us</h2>
+        <table class="contact-table">
+            <tr>
+                <th>Team Member</th>
+                <th>Role</th>
+                <th>Contact</th>
+            </tr>
+            <tr>
+                <td>NOOR MOHAMED</td>
+                <td>Team Lead</td>
+                <td><a href="https://www.instagram.com/noor_mohamed_.s" target="blank">@noor_mohamed.s</a></td>
+            </tr>
+            <tr>
+                <td>VAIGUNDA RAJA</td>
+                <td>Team Associate</td>
+                <td><a href="https://www.instagram.com/astro_raja03" target="_blank">@astro_raja03</a></td>
+            </tr>
+            <tr>
+                <td>JOSHA RAJA</td>
+                <td>Team Associate</td>
+                <td><a href="https://www.instagram.com/jr07234" target="_blank">@jr07234</a></td>
+            </tr>
+        </table>
     </div>
-
-</body>
-</html>
+</div>
+{% endblock %}

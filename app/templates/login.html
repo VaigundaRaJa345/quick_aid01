@@ -8,7 +8,7 @@
         /* General Styling */
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #ff758c, #ff7eb3, #ff6f61);
+            background: linear-gradient(to right, #1e3c72, #1e3c72, #2a5298);
             margin: 0;
             padding: 0;
             color: #333;
@@ -16,6 +16,16 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Header Styling */
+        .header {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         /* Login Container */
@@ -31,7 +41,7 @@
 
         /* Gradient Header */
         .login-header {
-            background: linear-gradient(135deg, #ff758c, #ff6f61);
+            background: linear-gradient(135deg, #1e3c72, #1e3c72);
             color: #fff;
             padding: 20px;
             border-radius: 10px 10px 0 0;
@@ -65,13 +75,13 @@
         }
 
         .login-form input:focus {
-            border-color: #ff5c5c;
+            border-color: #985cff;
             outline: none;
         }
 
         /* Button Styling */
         .login-form button {
-            background: linear-gradient(135deg, #ff5c5c, #ff7eb3);
+            background: linear-gradient(135deg, #1e3c72, #1e3c72);
             color: white;
             font-size: 1.1rem;
             border: none;
@@ -83,7 +93,7 @@
         }
 
         .login-form button:hover {
-            background: linear-gradient(135deg, #d32f2f, #ff5c5c);
+            background: linear-gradient(135deg, #532fd3, #a55cff);
         }
 
         /* Register Link */
@@ -93,14 +103,14 @@
         }
 
         .login-form a {
-            color: #ff5c5c;
+            color: #6a5cff;
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s ease;
         }
 
         .login-form a:hover {
-            color: #d32f2f;
+            color: #4a2fd3;
         }
 
         /* Responsive Design */
@@ -127,6 +137,8 @@
     </style>
 </head>
 <body>
+
+    <div class="header">QUICK AID</div>
 
     <div class="login-container">
         <div class="login-header">

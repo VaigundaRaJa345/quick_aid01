@@ -1,21 +1,114 @@
 {% extends "base.html" %}
 {% block content %}
+<style>
+    body {
+        background-color: #1e3c72;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+    .dashboard-container {
+        width: 90%;
+        margin: auto;
+        text-align: center;
+    }
+    h1 {
+        margin-bottom: 20px;
+    }
+    .cta-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        background-color: #ffcc00;
+        color: black;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .cta-button:hover {
+        background-color: #ffdb4d;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        color: black;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    th {
+        background-color: #1b2b55;
+        color: white;
+    }
+    img {
+        width: 100px;
+        height: 100px;
+    }
+    .action-links {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .edit-link, .download-link {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 3px;
+    }
+    .edit-link:hover, .download-link:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="dashboard-container">
     <h1>Your Dashboard</h1>
     <a href="{{ url_for('add_details') }}" class="cta-button">Add New Details</a>
 
-    {% for detail in details %}
-        <div class="feature-box">
-            <h3>{{ detail.name }}</h3>
-            <p>Emergency Contact: {{ detail.emergency_contact }}</p>
-            <p>Vehicle Number: {{ detail.vehicle_number }}</p>
-            <p>Blood Group: {{ detail.blood_group }}</p>
-            <p>Allergies: {{ detail.allergies }}</p>
-            <p>Differently-abled: {{ detail.differently_abled }}</p>
-            <p>Alternate Contact: {{ detail.alternate_contact }}</p>
-            <p>UID: {{ detail.uid }}</p>
-            <img src="{{ detail.aztec_code_path }}" alt="Aztec Code">
-            <a href="{{ url_for('edit_details', uid=detail.uid) }}">Edit</a>
-        </div>
-    {% endfor %}
+    {% if details %}
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Emergency Contact</th>
+                <th>Vehicle Number</th>
+                <th>Blood Group</th>
+                <th>Allergies</th>
+                <th>Differently-abled</th>
+                <th>Alternate Contact</th>
+                <th>UID</th>
+                <th>Aztec Code</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for detail in details %}
+            <tr>
+                <td>{{ detail.name }}</td>
+                <td>{{ detail.emergency_contact }}</td>
+                <td>{{ detail.vehicle_number }}</td>
+                <td>{{ detail.blood_group }}</td>
+                <td>{{ detail.allergies }}</td>
+                <td>{{ detail.differently_abled }}</td>
+                <td>{{ detail.alternate_contact }}</td>
+                <td>{{ detail.uid }}</td>
+                <td><img src="{{ detail.aztec_code_path }}" alt="Aztec Code"></td>
+                <td>
+                    <div class="action-links">
+                        <a href="{{ url_for('edit_details', uid=detail.uid) }}" class="edit-link">Edit</a>
+                        <a href="{{ detail.aztec_code_path }}" download="Aztec_Code_{{ detail.uid }}.png" class="download-link">Download</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No details found. Add new details to get started.</p>
+    {% endif %}
+</div>
 {% endblock %}
-

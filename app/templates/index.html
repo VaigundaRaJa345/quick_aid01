@@ -1,11 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="hero">
-        <h1>Welcome to QUICK AID</h1>
-        <p>Your emergency information at your fingertips.</p>
-        <a href="{{ url_for('register') }}" class="cta-button">Get Started</a>
-    </div>
+<style>
+    body {
+        background-color: #1e3c72;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    .hero {
+        background-color: #1a3360; /* Darker shade similar to the background */
+        padding: 50px 20px;
+        border-radius: 10px;
+        max-width: 800px;
+        margin: auto;
+    }
+    h1 {
+        margin-bottom: 10px;
+        font-size: 2.5rem;
+    }
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+    .cta-button {
+        display: inline-block;
+        padding: 12px 25px;
+        font-size: 1rem;
+        background-color: #ffcc00;
+        color: black;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .cta-button:hover {
+        background-color: #ffdb4d;
+    }
+    .qr-section {
+        margin-top: 30px;
+        padding: 20px;
+    }
+</style>
 
-    <div class="qr-section">
-    </div>
+<div class="hero">
+    <h1>Welcome to QUICK AID</h1>
+    <p>Make sure to your family that you are reachable from anywhere in the world even if you can't.</p>
+    <a href="{{ url_for('register') }}" class="cta-button">Get Started</a>
+</div>
+
+<div class="qr-section">
+</div>
 {% endblock %}
