@@ -63,6 +63,10 @@ def generate_aztec_code(uid):
     return aztec_code_path
 
 # Routes
+@app.route("/", methods=["GET", "HEAD"])
+def home():
+    return "Quick Aid is Running!", 200
+
 @app.route('/')
 def home():
     return render_template('index.html')
